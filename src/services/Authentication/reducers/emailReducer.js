@@ -40,6 +40,10 @@ export const emailReducer = (state = initialState, action) => {
       return {
         isSignOut: false,
       };
+    case ACTION.FORGOT_PASSWORD:
+      return {
+        forgotPasswordLoading: true,
+      };
     default:
       return {
         state,

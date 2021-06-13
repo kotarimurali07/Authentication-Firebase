@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Presentation from "./Presentation";
 import { handleEmailSignout } from "../../../Authentication/middleware/middleware";
 import { connect } from "react-redux";
 const Container = (props) => {
   const { logout, auth } = props;
+
   return (
     <div>
       <Presentation logout={logout} auth={auth} />
@@ -11,7 +12,6 @@ const Container = (props) => {
   );
 };
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
     auth: state.firebase.auth,
   };

@@ -3,28 +3,22 @@ import { handleSignup } from "../../middleware/middleware";
 import Presentation from "./Presentation";
 import { connect } from "react-redux";
 const Container = (props) => {
-  const { _handleSignup } = props;
+  const { _handleSignup, auth } = props;
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const buttonDisble = () => {
-    return (
-      firstName.length > 0 &&
-      lastName.length > 0 &&
-      email.length > 0 &&
-      password.length > 0
-    );
+    return email.length > 0 && password.length > 0;
   };
-  useEffect(() => {
-    handleSubmitSignUP();
-  }, []);
+
   const handleSubmitSignUP = (e) => {
-    console.log("HELOO");
-    const details = { email, password };
-    _handleSignup(details);
+    e.preventDefault();
+    const data = { email, password };
+    _handleSignup(data);
   };
+
   return (
     <div>
       <Presentation
@@ -33,6 +27,7 @@ const Container = (props) => {
         lastName={lastName}
         setLastName={setLastName}
         email={email}
+        auth={auth}
         setEmail={setEmail}
         password={password}
         setPassword={setPassword}
@@ -42,9 +37,15 @@ const Container = (props) => {
     </div>
   );
 };
+const mapStateToProps = (state) => {
+  console.log(state);
+  return {
+    auth: state.firebase.auth,
+  };
+};
 const mapDispatchToProps = (dispatch) => {
   return {
     _handleSignup: (data) => dispatch(handleSignup(data)),
   };
 };
-export default connect(null, mapDispatchToProps)(Container);
+export default connect(mapStateToProps, mapDispatchToProps)(Container);

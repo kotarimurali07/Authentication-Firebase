@@ -9,6 +9,7 @@ import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import { useStyles } from "../../styles/Login";
 import { Link } from "react-router-dom";
+import { CustomField } from "../../../../sharedComponents/formFeilds";
 const Presentation = (props) => {
   const classes = useStyles();
   const {
@@ -73,8 +74,8 @@ const Presentation = (props) => {
               </Button>
               <Grid container>
                 <Grid item xs>
-                  <Link href="#" variant="body2">
-                    Forgot password?
+                  <Link to="/ForgotPassword" variant="body2">
+                    {" Forgot password?"}
                   </Link>
                 </Grid>
                 <Grid item>
