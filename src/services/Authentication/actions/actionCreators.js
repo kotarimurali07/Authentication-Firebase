@@ -103,3 +103,9 @@ export const emailSignupFailure = () => {
     type: ACTION.EMAIL_SIGNUP_FAILURE,
   };
 };
+
+export const forgotPassword = () => {
+  return {
+    type: ACTION.FORGOT_PASSWORD,
+  };
+};

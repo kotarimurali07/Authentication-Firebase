@@ -5,7 +5,6 @@ import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 const Container = (props) => {
   const { _handleEmail, auth } = props;
-  console.log(props);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const validateForm = () => {
@@ -13,8 +12,6 @@ const Container = (props) => {
   };
   const handleLogin = (e) => {
     e.preventDefault();
-    // setEmail("");
-    // setPassword("");
     const data = { email, password };
     _handleEmail(data);
   };

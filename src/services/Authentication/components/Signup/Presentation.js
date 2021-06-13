@@ -9,6 +9,8 @@ import Typography from "@material-ui/core/Typography";
 import { useStyles } from "../../styles/Signup";
 import Container from "@material-ui/core/Container";
 import { Link } from "react-router-dom";
+import { Redirect } from "react-router";
+
 const Presentation = (props) => {
   const {
     firstName,
@@ -21,10 +23,13 @@ const Presentation = (props) => {
     setPassword,
     buttonDisble,
     handleSubmitSignUP,
+    auth,
   } = props;
   const classes = useStyles();
   return (
     <div>
+      <div>{auth.uid ? <Redirect to="/" /> : null}</div>
+
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <div className={classes.paper}>
@@ -41,7 +46,6 @@ const Presentation = (props) => {
                   autoComplete="fname"
                   name="firstName"
                   variant="outlined"
-                  required
                   fullWidth
                   id="firstName"
                   label="First Name"
@@ -53,7 +57,6 @@ const Presentation = (props) => {
               <Grid item xs={12} sm={6}>
                 <TextField
                   variant="outlined"
-                  required
                   fullWidth
                   id="lastName"
                   label="Last Name"

@@ -14,6 +14,7 @@ import {
   emailSignupRequest,
   emailSignupSuccess,
   emailSignupFailure,
+  forgotPassword,
 } from "../actions/actionCreators";
 export const handleEmail = (cred) => {
   return (dispatch, getState, { getFirebase }) => {
@@ -68,6 +69,21 @@ export const handleSignup = (data) => {
         console.log(err);
         console.log("UNABLE TO CREATE - USER");
         dispatch(emailSignupFailure());
+      });
+  };
+};
+export const ForgotPassword = (data) => {
+  return (dispatch, getState, { getFirebase }) => {
+    const firebase = getFirebase();
+    firebase
+      .auth()
+      .sendSignInLinkToEmail(data.email)
+      .then(() => {
+        console.log("email send to your mail....................");
+        dispatch(forgotPassword());
+      })
+      .catch(() => {
+        console.log("unable to send email link to email................");
       });
   };
 };
