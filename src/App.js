@@ -18,8 +18,8 @@ function App() {
             <Route path="/Signup" component={Signup} />
             <Route path="/ForgotPassword" component={ForgotPassword} />
             <Route exact path="/" component={TopNavBar} />
-            <Route path="/WebCamera" component={WebCamera} />
-            <Route path="/Charts" component={Charts} />
+            {/* <Route path="/WebCamera" component={WebCamera} />
+            <Route path="/Charts" component={Charts} /> */}
           </Switch>
         </Provider>
       </Router>
