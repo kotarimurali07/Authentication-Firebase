@@ -16,6 +16,7 @@ import {
   emailSignupFailure,
   forgotPassword,
 } from "../actions/actionCreators";
+import { db } from "../../../config/firebaseConfig";
 export const handleEmail = (cred) => {
   return (dispatch, getState, { getFirebase }) => {
     const firebase = getFirebase();
@@ -54,14 +55,26 @@ export const handleEmailSignout = () => {
       });
   };
 };
-export const handleSignup = (data) => {
-  return (dispatch, getState, { getFirebase }) => {
+
+export const handleSignup = (newUserData) => {
+  // console.log(firestore);
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
     dispatch(emailSignupRequest());
     const firebase = getFirebase();
+    const firestore = getFirestore();
     firebase
       .auth()
-      .createUserWithEmailAndPassword(data.email, data.password)
-      .then((userdetails) => {
+      .createUserWithEmailAndPassword(newUserData.email, newUserData.password)
+      .then((res) => {
+        return firestore
+          .collection("USERS")
+          .doc(res.user.id)
+          .set({
+            ...newUserData,
+            createdAt: new Date(),
+          });
+      })
+      .then((res) => {
         console.log("USER CREATED SUCCESS FULLY");
         dispatch(emailSignupSuccess());
       })
@@ -72,14 +85,15 @@ export const handleSignup = (data) => {
       });
   };
 };
+
 export const ForgotPassword = (data) => {
   return (dispatch, getState, { getFirebase }) => {
     const firebase = getFirebase();
     firebase
       .auth()
-      .sendSignInLinkToEmail(data.email)
+      .sendPasswordResetEmail(data.email)
       .then(() => {
-        console.log("email send to your mail....................");
+        console.log("email send to email successfully....................");
         dispatch(forgotPassword());
       })
       .catch(() => {
