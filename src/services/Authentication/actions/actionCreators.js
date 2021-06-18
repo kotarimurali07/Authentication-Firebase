@@ -104,8 +104,9 @@ export const emailSignupFailure = () => {
   };
 };
 
-export const forgotPassword = () => {
+export const forgotPassword = (payload) => {
   return {
     type: ACTION.FORGOT_PASSWORD,
+    payload,
   };
 };
