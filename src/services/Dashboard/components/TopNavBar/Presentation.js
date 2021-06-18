@@ -5,7 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import { Redirect } from "react-router";
 import { useStyles } from "../../styles/Charts";
-
+import TodoList from "../TodoList";
 const Presentation = (props) => {
   const { email, uid } = props;
   const classes = useStyles();
@@ -18,7 +18,7 @@ const Presentation = (props) => {
         <AppBar position="static">
           <Toolbar>
             <Typography variant="h6" className={classes.title}>
-              CHAT-APPLICATION
+              TODO-LIST
             </Typography>
             <Button color="inherit" onClick={logout}>
               LOGOUT
@@ -26,6 +26,7 @@ const Presentation = (props) => {
           </Toolbar>
         </AppBar>
       </div>
+      <TodoList />
     </div>
   );
 };
