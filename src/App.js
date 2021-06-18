@@ -8,6 +8,7 @@ import { store } from "./store/store";
 import TopNavBar from "./services/Dashboard/components/TopNavBar";
 import WebCamera from "./services/Dashboard/components/WebCamera";
 import Charts from "./services/Dashboard/components/Charts";
+import TodoList from "./services/Dashboard/components/TodoList";
 function App() {
   return (
     <div className="App">
@@ -20,6 +21,7 @@ function App() {
             <Route exact path="/" component={TopNavBar} />
             <Route path="/WebCamera" component={WebCamera} />
             <Route path="/Charts" component={Charts} />
+            <Route path="/TodoList" component={TodoList} />
           </Switch>
         </Provider>
       </Router>
