@@ -1,14 +1,12 @@
-body {
+/* body {
   background-color: #202040;
-}
-.App {
-  background-color: #a2d0c1;
-  min-height: 500px;
-  width: 400px;
-  margin: 40px auto;
-}
+} */
+/* .App {
+  background-color: #a2d0c1; */
 
-#to-do-form input {
+/* } */
+
+/* #to-do-form input {
   background-color: #0f3057;
   border: 0;
   color: #fff;
@@ -18,14 +16,14 @@ body {
   padding: 0 20px;
   font-size: 18px;
   border-radius: 10px;
-}
-#to-do-form input::placeholder {
+} */
+/* #to-do-form input::placeholder {
   color: rgba(255, 255, 255, 0.5);
 }
 #to-do-form input:focus {
   outline: none;
-}
-#to-do-form button {
+} */
+/* #to-do-form button {
   height: 50px;
   width: 80px;
   border-radius: 5px;
@@ -36,8 +34,8 @@ body {
 }
 #to-do-form button:focus {
   outline: none;
-}
-.list {
+} */
+/* .list {
   color: #fff;
   width: 300px;
   margin: 20px auto;
@@ -47,9 +45,9 @@ body {
   color: #0f1123;
   font-style: italic;
   font-size: larger;
-}
-.TiDelete {
+} */
+/* .TiDelete {
   margin: 0 10px;
   font-size: 20px;
   cursor: pointer;
-}
+} */

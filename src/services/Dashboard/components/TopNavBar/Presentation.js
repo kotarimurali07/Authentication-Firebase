@@ -6,6 +6,7 @@ import Button from "@material-ui/core/Button";
 import { Redirect } from "react-router";
 import { useStyles } from "../../styles/Charts";
 import TodoList from "../TodoList";
+import { ChatEngine } from "react-chat-engine";
 const Presentation = (props) => {
   const { email, uid } = props;
   const classes = useStyles();
@@ -26,7 +27,12 @@ const Presentation = (props) => {
           </Toolbar>
         </AppBar>
       </div>
-      <TodoList />
+      <ChatEngine
+        height="calc(100vh - 66px)"
+        projectID="630174bb-ca86-4fc6-925b-04db6402ebbe"
+        userName="admin@Chat.com"
+        userSecret="123456"
+      />
     </div>
   );
 };
