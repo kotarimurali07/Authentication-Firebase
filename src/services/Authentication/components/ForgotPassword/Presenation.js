@@ -7,10 +7,11 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import { Link } from "react-router-dom";
+import { EmailValadation } from "../../../../shared/V/Valadation";
 const Presenation = (props) => {
   const { email, setEmail, handleCancleButton, handleDoneButton } = props;
   const [open, setOpen] = React.useState(true);
-
+  console.log(email);
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -41,6 +42,11 @@ const Presenation = (props) => {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              helperText={
+                email.length && !EmailValadation(email)
+                  ? "Enter valid email"
+                  : null
+              }
               fullWidth
             />
           </DialogContent>
