@@ -9,18 +9,15 @@ import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import { useStyles } from "../../styles/Login";
 import { Link } from "react-router-dom";
-
+import {
+  EmailValadation,
+  PasswordValadation,
+} from "../../../../shared/V/Valadation";
 const Presentation = (props) => {
   const classes = useStyles();
-  const {
-    email,
-    setEmail,
-    password,
-    setPassword,
-    handleLogin,
-    auth,
-    validateForm,
-  } = props;
+
+  const { email, setEmail, password, setPassword, handleLogin, auth } = props;
+  const enabled = email.length > 0 && password.length > 6;
   return (
     <div>
       {auth.uid ? <Redirect to="/" /> : null}
@@ -45,6 +42,11 @@ const Presentation = (props) => {
                 name="email"
                 autoComplete="email"
                 autoFocus
+                helperText={
+                  email.length && !EmailValadation(email)
+                    ? "Enter valid email"
+                    : null
+                }
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
@@ -58,6 +60,13 @@ const Presentation = (props) => {
                 type="password"
                 id="password"
                 value={password}
+                helperText={
+                  password.length &&
+                  password.length > 6 &&
+                  PasswordValadation(password)
+                    ? null
+                    : "password must contain 6 digits"
+                }
                 onChange={(e) => setPassword(e.target.value)}
                 autoComplete="current-password"
               />
@@ -68,7 +77,7 @@ const Presentation = (props) => {
                 color="primary"
                 className={classes.submit}
                 onClick={handleLogin}
-                disabled={!validateForm()}
+                disabled={!enabled}
               >
                 Sign In
               </Button>

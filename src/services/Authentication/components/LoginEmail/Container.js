@@ -7,9 +7,7 @@ const Container = (props) => {
   const { _handleEmail, auth } = props;
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const validateForm = () => {
-    return email.length > 0 && password.length > 0;
-  };
+
   const handleLogin = (e) => {
     e.preventDefault();
     const data = { email, password };
@@ -25,7 +23,6 @@ const Container = (props) => {
         auth={auth}
         setPassword={setPassword}
         handleLogin={handleLogin}
-        validateForm={validateForm}
       />
     </div>
   );

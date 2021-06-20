@@ -10,6 +10,11 @@ import { useStyles } from "../../styles/Signup";
 import Container from "@material-ui/core/Container";
 import { Link } from "react-router-dom";
 import { Redirect } from "react-router";
+import {
+  EmailValadation,
+  NameValadation,
+  PasswordValadation,
+} from "../../../../shared/V/Valadation";
 
 const Presentation = (props) => {
   const {
@@ -50,6 +55,11 @@ const Presentation = (props) => {
                   id="firstName"
                   label="First Name"
                   autoFocus
+                  helperText={
+                    firstName.length && !NameValadation(firstName)
+                      ? "Enter valid Name"
+                      : null
+                  }
                   value={firstName}
                   onChange={(e) => setFirstName(e.target.value)}
                 />
@@ -62,6 +72,11 @@ const Presentation = (props) => {
                   label="Last Name"
                   name="lastName"
                   value={lastName}
+                  helperText={
+                    lastName.length && !NameValadation(lastName)
+                      ? "Enter valid Name"
+                      : null
+                  }
                   onChange={(e) => setLastName(e.target.value)}
                   autoComplete="lname"
                 />
@@ -77,6 +92,11 @@ const Presentation = (props) => {
                   autoComplete="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  helperText={
+                    email.length && !EmailValadation(email)
+                      ? "Enter valid email"
+                      : null
+                  }
                 />
               </Grid>
               <Grid item xs={12}>
@@ -90,6 +110,13 @@ const Presentation = (props) => {
                   id="password"
                   autoComplete="current-password"
                   value={password}
+                  helperText={
+                    password.length &&
+                    password.length > 6 &&
+                    PasswordValadation(password)
+                      ? null
+                      : "password must contain 6 digits"
+                  }
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </Grid>

@@ -17,17 +17,20 @@ import {
   forgotPassword,
 } from "../actions/actionCreators";
 import { db } from "../../../config/firebaseConfig";
+
+//login
 export const handleEmail = (cred) => {
+  console.log(db.collection("USERS").doc());
   return (dispatch, getState, { getFirebase }) => {
     const firebase = getFirebase();
-    dispatch(emailLoginRequest());
 
+    dispatch(emailLoginRequest());
     firebase
       .auth()
       .signInWithEmailAndPassword(cred.email, cred.password)
       .then((userDetails) => {
         const user = userDetails.user;
-        console.log(user);
+        // console.log(user);
         console.log("user logged in successfulyy");
         dispatch(emailLoginSuccess());
       })
@@ -38,6 +41,7 @@ export const handleEmail = (cred) => {
       });
   };
 };
+//logout
 export const handleEmailSignout = () => {
   return (dispatch, getState, { getFirebase }) => {
     dispatch(emailLoginRequest());
@@ -55,7 +59,7 @@ export const handleEmailSignout = () => {
       });
   };
 };
-
+//create-new-acount
 export const handleSignup = (newUserData) => {
   // console.log(firestore);
   return (dispatch, getState, { getFirebase, getFirestore }) => {
@@ -85,7 +89,7 @@ export const handleSignup = (newUserData) => {
       });
   };
 };
-
+//forgot-password
 export const ForgotPassword = (data) => {
   return (dispatch, getState, { getFirebase }) => {
     const firebase = getFirebase();
